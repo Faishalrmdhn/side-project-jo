@@ -48,29 +48,36 @@ export default {
         return{
             audioJo: false,
             message: true,
-            buttonPlay: true
+            buttonPlay: false
         }
     },
     watch:{
-        buttonPlay:{
-            immediate:true,
-            handler(val){
-                console.log(val)
-                }
-            }
+        // buttonPlay:{
+        //     immediate:true,
+        //     handler(val){
+        //         if(val == true){
+        //             setTimeout(()=>{
+        //                 this.buttonPlay = true
+        //             },2000)
+        //             this.buttonPlay == true
+        //         }
+                
+        //         }
+        //     }
         },
-    methods:{
+        created(){
+            this.initButton()
+        },
+        methods:{
         audio(){
             this.audioJo = true
             this.message = false
         },
-        created(){
-            // this.buttonPlay = false
+        initButton(){
             setTimeout(()=>{
                 this.buttonPlay = true
-            },1000)
-            console.log(this.$route)
-        },
+            },18000)
+        }
         // initBalloon(){
         //     const bdayBallons = (function(){
         // const density = 7; // concurrent balloon count
