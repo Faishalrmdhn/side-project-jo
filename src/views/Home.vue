@@ -22,7 +22,6 @@ export default {
             immediate: true,
             handler(val){
                 if (val== true){
-                    console.log('asdas')
                     setTimeout(()=>{
                         this.$router.push('/hbd')    
                     },1000)
