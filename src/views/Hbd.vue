@@ -1,8 +1,8 @@
 <template>
     <b-container fluid class="home" >
-        <b-row class="img-wrapper text-center">
-            <b-col sm="12" class="px-0">
-                <div class="wrap"></div>
+        <b-row class=" text-center">
+            <b-col sm="12" class="px-0 img-wrapper">
+                <!-- <div class="wrap"></div>
                 <img class="i" src="../assets/foto/1.png" alt="">
                 <img class="ii" src="../assets/foto/2.png" alt="">
                 <img class="iii" src="../assets/foto/3.png" alt="">
@@ -16,26 +16,26 @@
                 <img class="xi" src="../assets/foto/11.png" alt="">
                 <img class="xii" src="../assets/foto/12.png" alt="">
                 <img class="xiii" src="../assets/foto/13.png" alt="">
-                <img class="xiv" src="../assets/foto/14.png" alt="">
-                <div class="bck_sound">
+                <img class="xiv" src="../assets/foto/14.png" alt=""> -->
+                <div class="bck_sound" > 
                     <audio controls autoplay>
                         <source src="../assets/audio/backsound.mp3" type="audio/mpeg">
                     </audio>
-                </div>
+                </div> 
                 <div class="greet" v-show="message">
                     Happy <br> 
                     Birthday <br> 
                     Claudia
                     <b-row>
-                        <b-col  cols="8"> 
-                        <b-button @click="audio" variant="danger" size="sm" style="font-size: 13px" pill>Wish for you</b-button>
+                        <b-col v-show="buttonPlay" cols="8"> 
+                        <b-button  @click="audio" variant="danger" size="sm" style="font-size: 13px" pill>Wish for you</b-button>
                         </b-col>
                     </b-row>
                 </div>
                 <div v-show="audioJo" class="audio">
-                    <audio controls >
-                        <source src="../assets/audio/audioJo.mp3" type="audio/mpeg">
-                    </audio>
+                    <video width="280" height="498" controls >
+                        <source src="../assets/foto/spectrum.mp4" type="video/mp4">
+                    </video>
                 </div>
             </b-col>
         </b-row>   
@@ -47,14 +47,29 @@ export default {
     data(){
         return{
             audioJo: false,
-            message: true
+            message: true,
+            buttonPlay: true
         }
     },
+    watch:{
+        buttonPlay:{
+            immediate:true,
+            handler(val){
+                console.log(val)
+                }
+            }
+        },
     methods:{
         audio(){
             this.audioJo = true
             this.message = false
-
+        },
+        created(){
+            // this.buttonPlay = false
+            setTimeout(()=>{
+                this.buttonPlay = true
+            },1000)
+            console.log(this.$route)
         },
         // initBalloon(){
         //     const bdayBallons = (function(){
@@ -155,27 +170,34 @@ export default {
 </script>
 <style scoped>
     .home{
-        height: auto;
-        width: auto;
+        height: 481px;
+        width: 100%;
+        background-image:linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),url('../assets/foto/background.png');
+        
+    background-size: cover;
+    z-index: 1;
     }
     .audio{
         text-align: center;
         position: absolute;
-        top: 50%;
+        /* top: 70%; */
         z-index: 6;
-        width: 100%;
-        padding: 0px 5px;
+        width: auto;
+        height: auto;
+        padding: 0px;
     }
 
-    audio{
+    /* audio{
         width: 90%;
-    }
+    } */
 
     .bck_sound{
+        position: absolute;
         width: 10%;
         z-index:-1;
     }
     .greet{
+        color: #000000;
         text-align: left;
         position: absolute;
         top: 150px;
@@ -205,14 +227,12 @@ export default {
     .toggle{
         z-index: 9;
     }
-    .img-wrapper{
-        /* background-color: tomato; */
+    /* .img-wrapper{
         position: absolute;
         width:  100%;
         height: 100%;
-        max-width: 254px;
-        /* z-index: 3000 */
-    }
+        max-width: auto;
+    } */
     .img-wrapper .i {
         position: absolute;
         z-index: 1;

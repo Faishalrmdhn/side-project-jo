@@ -2,8 +2,8 @@
     <b-container fluid class="home" >
         <b-row class="btn-wrapper">
             <b-col sm="12" class="text-center" align-self="center" align-h="center">
-                <div class="task mb-3">TURN ON THE LIGHT</div>
-                <b-form-checkbox style="color: red" size="lg" v-model="checked"  name="check-button" switch>
+                <div style="cursor:pointer;" class="task mb-3">TURN ON THE LIGHT</div>
+                <b-form-checkbox style="color: red; cursor:pointer" size="lg" v-model="checked"  name="check-button" switch>
                 </b-form-checkbox>
             </b-col>
         </b-row>
